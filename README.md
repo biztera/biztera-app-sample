@@ -1,6 +1,6 @@
 # biztera-app-sample
 
-A sample app for integration with Biztera.
+A sample Node.js app for integration with Biztera.
 
 ## Create a Biztera application
 
@@ -8,7 +8,7 @@ Register for a Biztera account and create your Biztera app. You will be given a 
 
 ## Running Locally
 
-Make sure you have [Node.js](http://nodejs.org/) and the [Heroku Toolbelt](https://toolbelt.heroku.com/) installed.
+Make sure you have [Node.js](http://nodejs.org/) installed.
 
 ```sh
 export CLIENT_ID=__YOUR_CLIENT_ID__ # use the `client_id` given to you
