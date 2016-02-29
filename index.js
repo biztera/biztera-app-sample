@@ -8,7 +8,7 @@ app.set('port', (process.env.PORT || 5000));
 app.use(express.static(__dirname + '/public'));
 
 app.get('/', function(req, res) {
-  res.send('<a href="https://biztera.com/oauth2/authorize?client_id=' + client_id + '&scope=read_profile,read_org">Connect to Biztera</a>');
+  res.send('<h1>Sample Biztera Integration</h1><hr/><h2><a href="https://biztera.com/oauth2/authorize?client_id=' + client_id + '&scope=read_profile,read_org">Connect to Biztera</a></h2>');
 });
 
 app.get('/callback', function(req, res) {
@@ -28,7 +28,7 @@ app.get('/callback', function(req, res) {
     if(err) {
       return res.send('Error: ' + err.message);
     }
-    res.json(body);
+    res.send('<h1>Sample Biztera Integration</h1><hr/><h2>Successfully received access token!</h2><pre>' + JSON.stringify(body) + '</pre><br/><a href="/">Start Over</a>');
   });
 });
 
