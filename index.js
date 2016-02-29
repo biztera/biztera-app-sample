@@ -27,15 +27,16 @@ app.get('/callback', function(req, res) {
       client_secret: client_secret,
       code: req.query.code
     },
-    method: 'POST'
+    method: 'POST',
+    json: true
   }, function(err, response, body) {
-    if(err) {
+    if(err || response.statusCode >= 400) {
       return res.render('callback_error', {
-        error: err.message
+        error: (err ? err.message : (body && body.error_description))
       });
     }
     res.render('callback_success', {
-      response: body
+      response: JSON.stringify(body)
     });
   });
 });
