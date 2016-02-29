@@ -1,29 +1,26 @@
 {
-  "name": "node-js-sample",
-  "version": "0.2.0",
-  "description": "A sample Node.js app using Express 4",
+  "name": "biztera-app-sample",
+  "version": "1.0.0",
+  "description": "Biztera Sample App",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
   "dependencies": {
-    "express": "^4.13.3"
+    "express": "^4.13.3",
+    "request": "^2.65.0"
   },
   "engines": {
     "node": "4.0.0"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/heroku/node-js-sample"
+    "url": "https://github.com/biztera/biztera-app-sample"
   },
   "keywords": [
-    "node",
-    "heroku",
-    "express"
+    "biztera",
+    "integration"
   ],
-  "author": "Mark Pundsack",
-  "contributors": [
-    "Zeke Sikelianos <zeke@sikelianos.com> (http://zeke.sikelianos.com)"
-  ],
+  "author": "Jack Hsu",
   "license": "MIT"
 }
