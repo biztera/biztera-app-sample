@@ -7,13 +7,18 @@ var client_secret = process.env.CLIENT_SECRET;
 app.set('port', (process.env.PORT || 5000));
 app.use(express.static(__dirname + '/public'));
 
+app.engine('html', require('swig').renderFile);
+app.set('view engine', 'html');
+
 app.get('/', function(req, res) {
-  res.send('<h1>Sample Biztera Integration</h1><hr/><h2><a href="https://biztera.com/oauth2/authorize?client_id=' + client_id + '&scope=read_profile,read_org">Connect to Biztera</a></h2>');
+  res.render('index', {client_id: client_id});
 });
 
 app.get('/callback', function(req, res) {
   if(req.query.error === 'access_denied') {
-    return res.send('User denied.');
+    return res.render('callback_error', {
+      error: 'User denied the access.'
+    });
   }
   request({
     url: 'https://biztera.com/oauth2/token',
@@ -22,16 +27,23 @@ app.get('/callback', function(req, res) {
       client_secret: client_secret,
       code: req.query.code
     },
-    method: 'POST',
-    json: true
+    method: 'POST'
   }, function(err, response, body) {
     if(err) {
-      return res.send('Error: ' + err.message);
+      return res.render('callback_error', {
+        error: err.message
+      });
     }
-    res.send('<h1>Sample Biztera Integration</h1><hr/><h2>Successfully received access token!</h2><pre>' + JSON.stringify(body) + '</pre><br/><a href="/">Start Over</a>');
+    res.render('callback_success', {
+      response: body
+    });
   });
 });
 
+app.use(function(req, res) {
+  res.render('404');
+});
+
 app.listen(app.get('port'), function() {
-  console.log("Node app is running at localhost:" + app.get('port'));
+  console.log("Sample app is running at localhost:" + app.get('port'));
 });
