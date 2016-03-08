@@ -1,12 +1,12 @@
 # biztera-app-sample
 
-A sample Node.js app for integration with Biztera.
+A sample Node.js app for integration with [Biztera](https://biztera.com).
 
 ## Create a Biztera application
 
-Register for a Biztera account and create your Biztera app. You will be given a `client_id` and `client_secret` that you will use in the OAuth client.
+[Register](https://biztera.com/register) for a Biztera account and [create your Biztera app](https://biztera.com/developer/apps/new). You will be given a `client_id` and `client_secret` that you will use in the OAuth client.
 
-## Running Locally
+## Running the sample app locally
 
 Make sure you have [Node.js](http://nodejs.org/) installed.
 
